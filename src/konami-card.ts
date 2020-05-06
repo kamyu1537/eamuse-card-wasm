@@ -21,7 +21,7 @@ const wasmModule = new WebAssembly.Module(bytes);
 const wasmInstance = new WebAssembly.Instance(wasmModule, go.importObject);
 go.run(wasmInstance).then();
 
-export const encode = function(nfcId: string) {
+export const encode = function(nfcId: string): Promise<string> {
   return new Promise((resolve) => {
     // @ts-ignore
     KONAMI_CARD_ENCODE(nfcId, function(result: string) {
@@ -30,7 +30,7 @@ export const encode = function(nfcId: string) {
   });
 };
 
-export const decode = function(cardId: string) {
+export const decode = function(cardId: string): Promise<string> {
   return new Promise((resolve) => {
     // @ts-ignore
     KONAMI_CARD_DECODE(cardId, function(result: string) {
