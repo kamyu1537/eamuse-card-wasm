@@ -13,7 +13,7 @@ npm run build
 
 ## Usage
 ```node
-import { KonamiCard } from 'konami-card';
+import KonamiCard from 'konami-card';
 
 KonamiCard.encode(nfcId).then(result => console.info(result));
 KonamiCard.decode(cardId).then(result => console.info(result));
