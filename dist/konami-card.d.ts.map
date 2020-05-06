@@ -1,0 +1,1 @@
+{"version":3,"file":"konami-card.d.ts","sourceRoot":"","sources":["../src/konami-card.ts"],"names":[],"mappings":";AAEA,OAAO,QAAQ,QAAQ,CAAC;IACtB,SAAS,eAAe,CAAC,GAAG,EAAE,KAAK,CAAC,MAAM,CAAC,GAAG,UAAU,GAAG,MAAM,GAAG,UAAU,CAAC;CAChF;AAmBD,eAAO,MAAM,MAAM,qCAOlB,CAAC;AAEF,eAAO,MAAM,MAAM,sCAOlB,CAAC;;;;;AAEF,wBAAkC"}
