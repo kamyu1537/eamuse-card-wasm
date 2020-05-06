@@ -1,18 +1,16 @@
 {
   "name": "konami-card",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/konami-card.js",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "cross-env GOOS=js GOARCH=wasm go build -o build/konami-card.wasm src/main.go"
+    "wasm-build": "cross-env GOOS=js GOARCH=wasm go build -o dist/konami-card.wasm main.go",
+    "build": "npm run wasm-build && tsc"
   },
   "devDependencies": {
+    "@types/node": "^13.13.5",
     "cross-env": "^7.0.2",
-    "prettier": "^2.0.2"
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true
+    "typescript": "^3.8.3"
   }
 }
