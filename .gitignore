@@ -3,6 +3,3 @@
 
 # Node.JS
 /node_modules
-
-# Build
-/build/konami-card.wasm
