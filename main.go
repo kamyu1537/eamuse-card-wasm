@@ -965,7 +965,7 @@ func jsDecode(_ js.Value, inputs []js.Value) interface{} {
 
 func main() {
 	c := make(chan bool)
-	js.Global().Set("KONAMI_CARD_ENCODE", js.FuncOf(jsEncode))
-	js.Global().Set("KONAMI_CARD_DECODE", js.FuncOf(jsDecode))
+	js.Global().Set("__konami_card_encode", js.FuncOf(jsEncode))
+	js.Global().Set("__konami_card_decode", js.FuncOf(jsDecode))
 	<-c
 }

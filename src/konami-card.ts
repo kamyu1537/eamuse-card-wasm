@@ -11,9 +11,13 @@ crypto['getRandomValues'] = (buf: Array<number> | Uint8Array | Buffer): Uint8Arr
   return buf;
 };
 
+declare class Go {
+  public importObject: any;
+  run(instance: WebAssembly.Instance): Promise<any>
+}
+
 require('./wasm_exec');
 
-//@ts-ignore
 const go = new Go();
 const path = require('path').join(__dirname, 'konami-card.wasm');
 const bytes = require('fs').readFileSync(path);
@@ -21,10 +25,18 @@ const wasmModule = new WebAssembly.Module(bytes);
 const wasmInstance = new WebAssembly.Instance(wasmModule, go.importObject);
 go.run(wasmInstance).then();
 
+declare global {
+  namespace NodeJS {
+    interface Global {
+      __konami_card_encode(nfcId: string, func: (result: string) => void): void;
+      __konami_card_decode(cardId: string, func: (result: string) => void): void;
+    }
+  }
+}
+
 export const encode = function(nfcId: string): Promise<string> {
   return new Promise((resolve) => {
-    // @ts-ignore
-    KONAMI_CARD_ENCODE(nfcId, function(result: string) {
+    global.__konami_card_encode(nfcId, function(result: string) {
       resolve(result);
     });
   });
@@ -32,8 +44,7 @@ export const encode = function(nfcId: string): Promise<string> {
 
 export const decode = function(cardId: string): Promise<string> {
   return new Promise((resolve) => {
-    // @ts-ignore
-    KONAMI_CARD_DECODE(cardId, function(result: string) {
+    global.__konami_card_decode(cardId, function(result: string) {
       resolve(result);
     });
   });
