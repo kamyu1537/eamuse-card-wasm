@@ -1,4 +1,4 @@
-# konami-card-wasm
+# eamuse-card-wasm
 Convert e-amusement card ID and NFC ID to each other.
 
 ## Requirement
